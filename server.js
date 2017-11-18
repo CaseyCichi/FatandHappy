@@ -15,12 +15,14 @@ app.use(bodyParser.json());
 
 // Reservation Tables
 // =============================================================
-var reservations = [{
+var reservations = [
+    {
     customerEmail: "example@exemple.com",
     customerID: "example",
     customerName: "example",
     phoneNumber: "888888888"
-}];
+    }
+];
 
 var waitinglist = [];
 
@@ -36,6 +38,31 @@ app.get("/make", function(req, res) {
 
 app.get("/view", function(req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
+});
+
+app.get("/test", function(req, res) {
+    res.json(reservations);
+});
+
+
+
+// Create New reservation - takes in JSON input
+app.post("/api/new", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body-parser middleware
+    var newReservation = req.body;
+    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+
+    console.log(newReservation);
+
+    if (reservations.length < 4) {
+        reservations.push(newReservation);
+    } else {
+        waitinglist.push(newReservation);
+    }
+
+
+    res.json(newReservation);
 });
 
 
