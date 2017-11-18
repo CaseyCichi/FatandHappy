@@ -27,21 +27,21 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Phone Number</label>
+						<label for="phoneNumber" class="col-sm-2 control-label">Phone Number</label>
 						<div class="col-sm-10">
-							<input type="text" id="phonenumber" class="form-control" placeholder="888-888-8888">
+							<input type="text" id="phoneNumber" class="form-control" placeholder="888-888-8888">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+						<label for="email" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
 							<input type="text" id="email" class="form-control" placeholder="example@hello.com">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Unique ID</label>
+						<label for="uniqueId" class="col-sm-2 control-label">Unique ID</label>
 						<div class="col-sm-10">
-							<input type="text" id="uniqueId" class="form-control" placeholder="input an unique id???">
+							<input type="text" id="uniqueId" class="form-control" placeholder="Reservation Name">
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,24 +55,24 @@
 	</div>
 
 	<script type="text/javascript">
-		$('document').ready(function(){
-			$(document).on("click", ".btn-primary.submit", function(){
+        $("#add-btn").on("click", function(event) {
+            event.preventDefault();
 
-				var name = $("#name").val().trim();
-				var phone = $("#phoneNumber").val().trim();
-				var email = $("#email").val().trim();
-				var uniqueID = $("#uniqueId").val().trim();
+			var newReservation = {
+				name: $("#name").val().trim(),
+				phoneNumber: $("#phoneNumber").val().trim(),
+				email: $("#email").val().trim(),
+				uniqueId: $("#uniqueId").val().trim()
+			};
 
-				var newReservation = {
-					name: name,
-					phoneNumber: phone,
-					email: email,
-					uniqueId: uniqueID
-				};
+			console.log(newReservation);
 
-				console.log(newReservation);
-					
-			});
+            $.post("/api/new", newReservation)
+                .done(function(data) {
+                    console.log(data);
+                    alert("Adding Reservation...");
+            });
+
 		});
 	</script>
 
