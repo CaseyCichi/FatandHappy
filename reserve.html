@@ -56,6 +56,7 @@
 	</div>
 	
 	<script type="text/javascript">
+		
 	$('.submit').click(function () {
 		var name = $("#name").val().trim();
 		var phone = $("#phonenumber").val().trim();
@@ -68,12 +69,16 @@
 			phonenumber: phone,
 			email: email,
 			uniqueId: uniqueID
-
-		}
+		};
 		console.log(newReservation);
-	});
 
-	
+        $.post("/api/new", newReservation)
+            .done(function(data) {
+                console.log(data);
+                alert("Adding Reservation...");
+            });
+
+	});
 
 	</script>
 
