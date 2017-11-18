@@ -44,6 +44,10 @@ app.get("/test", function(req, res) {
     res.json(reservations);
 });
 
+app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
 
 
 // Create New reservation - takes in JSON input
