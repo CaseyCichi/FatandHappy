@@ -2,18 +2,14 @@
 <html>
 <head>
 	<title>Make a reservation</title>
-
-	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 	  <div class="jumbotron text-center">
 	  	<div class="headerContainer">	
-	    <h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>   Fat and Happy!!</h1>
-	    <!--<a href="http://localhost:8080/"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Home</button></a>-->
+	    <h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>   Fat and Happy!!</h1> 
+	    <a href="http://localhost:3000/"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Home</button></a>
 	    </div>
 	  </div>
 	</div>
@@ -48,7 +44,7 @@
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" id="submit" class="btn btn-primary submit">Submit Form</button>
+		      <button type="submit" class="btn btn-primary submit">Submit Form</button>
 		    </div>
 		  </div>
 		</form>
@@ -59,30 +55,26 @@
 	</div>
 	
 	<script type="text/javascript">
+		$('document').ready(function(){
+			$(document).on("click", ".btn-primary.submit", function(){
 
-	$('#submit').click(function () {
-		var name = $("#name").val().trim();
-		var phone = $("#phonenumber").val().trim();
-		var email = $("#email").val().trim();
-		var uniqueID = $("#uniqueId").val().trim();
+				var name = $("#name").val().trim();
+				var phone = $("#phonenumber").val().trim();
+				var email = $("#email").val().trim();
+				var uniqueID = $("#uniqueId").val().trim();
 
-		
-		var newReservation = {
-			name: name,
-			phonenumber: phone,
-			email: email,
-			uniqueId: uniqueID
-		};
-		console.log(newReservation);
-        console.log('did this work?');
+				var newReservation = {
+					name: name,
+					phonenumber: phone,
+					email: email,
+					uniqueId: uniqueID
+				}
 
-        $.post("/api/new", newReservation)
-            .done(function(data) {
-                console.log(data);
-                alert("Adding Reservation...");
-            });
-
+				console.log(newReservation);
+					
+				});
 	});
+	
 
 	</script>
 
