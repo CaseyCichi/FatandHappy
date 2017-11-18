@@ -13,6 +13,16 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Reservation Tables
+// =============================================================
+var reservations = [{
+    customerEmail: "example@exemple.com",
+    customerID: "example",
+    customerName: "example",
+    phoneNumber: "888888888"
+}];
+
+var waitinglist = [];
 
 // Routes
 // =============================================================
