@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,4 +17,86 @@
         </div>
     </div>
 </body>
+=======
+<html>
+<head>
+	<title>Make a reservation</title>
+	<link rel="stylesheet" href="css/style.css">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+	  <div class="jumbotron text-center">
+	  	<div class="headerContainer">
+			<h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>   Fat and Happy!!</h1> 
+			<a href="http://localhost:3000/tables"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>View Tables</button></a>			
+	    <a href="http://localhost:3000/"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Make Reservation</button></a>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">Reservation Form</div>
+			<div class="panel-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" id="name" class="form-control" placeholder="John Smith">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="phoneNumber" class="col-sm-2 control-label">Phone Number</label>
+						<div class="col-sm-10">
+							<input type="text" id="phoneNumber" class="form-control" placeholder="888-888-8888">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<input type="text" id="email" class="form-control" placeholder="example@hello.com">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="uniqueId" class="col-sm-2 control-label">Unique ID</label>
+						<div class="col-sm-10">
+							<input type="text" id="uniqueId" class="form-control" placeholder="Reservation Name">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-primary submit">Submit Form</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+        $("#submit").on("click", function(event) {
+            event.preventDefault();
+
+			var newReservation = {
+				name: $("#name").val().trim(),
+				phoneNumber: $("#phoneNumber").val().trim(),
+				email: $("#email").val().trim(),
+				uniqueId: $("#uniqueId").val().trim()
+			};
+
+			console.log(newReservation);
+
+            $.post("/api/new", newReservation)
+                .done(function(data) {
+                    console.log(data);
+                    alert("Adding Reservation...");
+            });
+
+		});
+	</script>
+
+</body>
+
+>>>>>>> Stashed changes
 </html>
